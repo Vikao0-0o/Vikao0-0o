@@ -20,7 +20,7 @@ int main() {
 
     do {
         cout << "Введите название продукта: ";
-        getline(cin >> ws, productName); // Используем getline для корректного ввода строк с пробелами
+        getline(cin >> ws, productName); 
 
         cout << "Введите Ккал: ";
         cin >> kcal;
@@ -38,7 +38,7 @@ int main() {
 
         cout << "Добавить еще продукт? (y/n): ";
         cin >> addMore;
-        cin.ignore(); // Очищаем буфер cin после ввода символа
+        cin.ignore(); 
 
     } while (addMore == 'y' || addMore == 'Y');
 
