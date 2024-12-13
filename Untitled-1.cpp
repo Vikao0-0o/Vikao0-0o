@@ -1,22 +1,70 @@
 #include <iostream>
+#include <string>
 #include <vector>
-#include <algorithm> 
-int main() {
-    int n;
-    std::cout <<"Введите количество элементов массива💗: ";
-    std::cin >> n;
-    std::vector<int> arr(n); 
-    std::cout <<"Введите элементы массива🤍: ";
-    for (int i = 0; i < n; ++i) {
-        std::cin >> arr[i]; 
-    }
-    std::sort(arr.begin(), arr.end());
 
-    std::cout <<"Упорядоченный массив по возрастанию💮: ";
-    for (const int& num : arr) {
-        std::cout << num << " ";
+using namespace std;
+
+struct Product {
+    string name;
+    double kcal;
+    double protein;
+    double fat;
+    double carbs;
+};
+
+int main() {
+    vector<Product> products;
+    string productName;
+    double kcal, protein, fat, carbs;
+    char addMore;
+
+    do {
+        cout << "Введите название продукта: ";
+        getline(cin >> ws, productName); // Используем getline для корректного ввода строк с пробелами
+
+        cout << "Введите Ккал: ";
+        cin >> kcal;
+
+        cout << "Введите белки (г): ";
+        cin >> protein;
+
+        cout << "Введите жиры (г): ";
+        cin >> fat;
+
+        cout << "Введите углеводы (г): ";
+        cin >> carbs;
+
+        products.push_back({productName, kcal, protein, fat, carbs});
+
+        cout << "Добавить еще продукт? (y/n): ";
+        cin >> addMore;
+        cin.ignore(); // Очищаем буфер cin после ввода символа
+
+    } while (addMore == 'y' || addMore == 'Y');
+
+    double totalKcal = 0;
+    double totalProtein = 0;
+    double totalFat = 0;
+    double totalCarbs = 0;
+
+    cout << "\n--- Итоги ---\n";
+    for (const auto& product : products) {
+        cout << product.name << ":" << endl;
+        cout << " Ккал: " << product.kcal << endl;
+        cout << " Белки: " << product.protein << " г" << endl;
+        cout << " Жиры: " << product.fat << " г" << endl;
+        cout << " Углеводы: " << product.carbs << " г" << endl;
+        totalKcal += product.kcal;
+        totalProtein += product.protein;
+        totalFat += product.fat;
+        totalCarbs += product.carbs;
     }
-    std::cout << std::endl;
+
+    cout << "\nИтого:\n";
+    cout << " Ккал: " << totalKcal << endl;
+    cout << " Белки: " << totalProtein << " г" << endl;
+    cout << " Жиры: " << totalFat << " г" << endl;
+    cout << " Углеводы: " << totalCarbs << " г" << endl;
 
     return 0;
 }
