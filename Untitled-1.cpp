@@ -21,7 +21,6 @@ int main() {
     do {
         cout << "Введите название продукта: ";
         getline(cin >> ws, productName); 
-
         cout << "Введите Ккал: ";
         cin >> kcal;
 
